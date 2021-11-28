@@ -3,7 +3,7 @@ import * as bodyParser from "express";
 import * as dayjs from "dayjs";
 import { CombineRoutes } from "./routers";
 import * as mongoose from "mongoose";
-import { CONFIGS } from "./app-config";
+import { CONFIGS } from "./app.config";
 import errorMiddleware from "./errorMiddleware/error.middleware";
 class App {
   public app: express.Application;

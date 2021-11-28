@@ -2,8 +2,9 @@ import * as express from "express";
 import { UserI } from "interfaces/user.interface";
 import { plainToClass } from "class-transformer";
 import { validate, ValidationError } from "class-validator";
-import RegisterUserDTO from "../validator/RegisterUserDTO";
-import HttpException from "../exceptions/HttpException";
+import RegisterUserDTO from "../validator/register-user.dto";
+import HttpException from "../exceptions/http.exception";
+import UserModel from "../models/user.model";
 
 class UserController {
   constructor() {}
@@ -22,6 +23,13 @@ class UserController {
         .join(", ");
       next(new HttpException(400, message));
     }
+    const user = new UserModel();
+    user.email = userRequest.email;
+    user.password = userRequest.password;
+    user.firstName = userRequest.firstName;
+    user.lastName = userRequest.lastName;
+    user.phone = userRequest?.phone || null;
+    await user.save();
   }
 }
 export default UserController;
