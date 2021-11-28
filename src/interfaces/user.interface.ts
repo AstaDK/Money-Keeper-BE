@@ -3,5 +3,5 @@ export interface UserI {
   lastName: string;
   email: string;
   password: string;
-  phone: number;
+  phone?: number;
 }

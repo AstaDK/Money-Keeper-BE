@@ -19,7 +19,7 @@ const UserSchema = new Schema<UserI>(
     },
     phone: {
       type: Number,
-      required: true,
+      required: false,
     },
     password: {
       type: String,
@@ -28,5 +28,5 @@ const UserSchema = new Schema<UserI>(
   },
   { timestamps: { createdAt: "created_at", updatedAt: "updated_at" } }
 );
-const UserModel = mongoose.model<UserI & mongoose.Document>('User', UserSchema);
+const UserModel = mongoose.model<UserI & mongoose.Document>("User", UserSchema);
 export default UserModel;

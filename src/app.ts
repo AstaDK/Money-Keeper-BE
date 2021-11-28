@@ -4,6 +4,7 @@ import * as dayjs from "dayjs";
 import { CombineRoutes } from "./routers";
 import * as mongoose from "mongoose";
 import { CONFIGS } from "./app-config";
+import errorMiddleware from "./errorMiddleware/error.middleware";
 class App {
   public app: express.Application;
   public combineRoute: CombineRoutes = new CombineRoutes();
@@ -14,6 +15,7 @@ class App {
     this.config();
     this.combineRoute.init(this.app);
     this.mongoSetup();
+    this.initializeErrorHandling();
   }
 
   private loggerMiddleware(req: express.Request, res: express.Request, next) {
@@ -38,6 +40,10 @@ class App {
         message: "Server starting...",
       });
     });
+  }
+
+  private initializeErrorHandling() {
+    this.app.use(errorMiddleware);
   }
 
   private mongoSetup(): void {

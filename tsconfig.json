@@ -6,8 +6,15 @@
     "sourceMap": true,
     "target": "es2017",
     "outDir": "./dist",
-    "baseUrl": "./src"
+    "baseUrl": "./src",
+    "experimentalDecorators": true,
+    "allowJs": true
   },
-  "include": ["src/**/*.ts", "ap.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "ap.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
