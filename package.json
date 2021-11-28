@@ -1,0 +1,25 @@
+{
+  "name": "money-keeper-be",
+  "version": "1.0.0",
+  "description": "Money Keeper API",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AstaDK/Money-Keeper-BE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AstaDK/Money-Keeper-BE/issues"
+  },
+  "homepage": "https://github.com/AstaDK/Money-Keeper-BE#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.15",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "scripts": {
+    "dev": "nodemon ./src/server.ts"
+  }
+}
