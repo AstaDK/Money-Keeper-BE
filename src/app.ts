@@ -2,15 +2,18 @@ import * as express from "express";
 import * as bodyParser from "express";
 import * as dayjs from "dayjs";
 import { CombineRoutes } from "./routers";
-
+import * as mongoose from "mongoose";
+import { CONFIGS } from "./app-config";
 class App {
   public app: express.Application;
   public combineRoute: CombineRoutes = new CombineRoutes();
+  public mongoUrl: string = CONFIGS.MONGO_URL;
 
   constructor() {
     this.app = express();
     this.config();
     this.combineRoute.init(this.app);
+    this.mongoSetup();
   }
 
   private loggerMiddleware(req: express.Request, res: express.Request, next) {
@@ -35,6 +38,12 @@ class App {
         message: "Server starting...",
       });
     });
+  }
+
+  private mongoSetup(): void {
+    console.log("📌 INFO::Connecting to mongo...");
+    (<any>mongoose).Promise = global.Promise;
+    mongoose.connect(this.mongoUrl);
   }
 }
 export default new App().app;

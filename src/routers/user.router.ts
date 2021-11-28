@@ -1,9 +1,12 @@
+import UserController from "../controller/user.controller";
 import * as express from "express";
 
 class AuthRoute {
   public router: express.Router;
+  public userController: UserController;
   constructor() {
     this.router = express.Router();
+    this.userController = new UserController();
     this.routers();
   }
 
@@ -14,12 +17,7 @@ class AuthRoute {
         res.status(200).json({ message: "login" });
       }
     );
-    this.router.get(
-      "/register",
-      (req: express.Request, res: express.Response, next) => {
-        res.status(200).json({ message: "register" });
-      }
-    );
+    this.router.post("/register", this.userController.register);
   }
 }
 

@@ -1,5 +1,5 @@
 import * as express from "express";
-import AuthRoute from "./auth.router";
+import AuthRoute from "./user.router";
 
 export class CombineRoutes {
   private authRoute: express.Router;
@@ -8,6 +8,6 @@ export class CombineRoutes {
     this.authRoute = AuthRoute;
   }
   init(app: express.Application): void {
-    app.use("/api/v1/auth", this.authRoute);
+    app.use("/api/v1/user", this.authRoute);
   }
 }
